@@ -82,28 +82,6 @@ def datenschutz_abgeschlossen():
     return st.session_state.datenschutz_abgeschlossen
 
 
-def modul_label(name, abgeschlossen):
-    color = "#15803d" if abgeschlossen else "#6b7280"
-    bg_color = "#dcfce7" if abgeschlossen else "#f3f4f6"
-
-    st.markdown(
-        f"""
-        <div style="
-            background-color: {bg_color};
-            color: {color};
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-top: 8px;
-            margin-bottom: 6px;
-        ">
-            {name}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-
 def main():
     init_global_score()
     init_module_progress()
@@ -115,23 +93,19 @@ def main():
         if st.button("Start", use_container_width=True):
             st.session_state.current_page = "Start"
 
-        modul_label("Grundlagen", grundlagen_abgeschlossen())
-        if st.button("Grundlagen öffnen", use_container_width=True):
+        if st.button("Grundlagen", use_container_width=True):
             st.session_state.current_page = "Grundlagen"
 
-        modul_label("Datenschutz", datenschutz_abgeschlossen())
-        if st.button("Datenschutz öffnen", use_container_width=True):
+        if st.button("Datenschutz", use_container_width=True):
             st.session_state.current_page = "Datenschutz"
 
-        modul_label("Falschinformationen", falschinformationen_abgeschlossen())
-        if st.button("Falschinformationen öffnen", use_container_width=True):
+        if st.button("Falschinformationen", use_container_width=True):
             st.session_state.current_page = "Falschinformationen"
 
-        modul_label("Richtige Nutzung der KI", nutzung_ki_abgeschlossen())
-        if st.button("Richtige Nutzung der KI öffnen", use_container_width=True):
+        if st.button("Richtige Nutzung der KI", use_container_width=True):
             st.session_state.current_page = "Nutzung KI"
 
-        st.markdown("---")
+     
 
         if st.session_state.current_page == "Grundlagen":
             st.markdown("### Unterthemen")
@@ -191,7 +165,7 @@ def main():
 
             st.session_state.selected_nutzung_ki_modul = selected_label.replace(" ✓", "")
 
-        st.markdown("---")
+       
         st.subheader("⭐ Dein Punktestand")
         st.write(f"Gesamtpunkte: {st.session_state.total_score}")
         st.write(f"Beantwortete Fragen: {st.session_state.total_answered}")
