@@ -2,13 +2,17 @@ import streamlit as st
 
 def show_start():
     
-    st.title("Willkommen zur interaktiven Lernumgebung zu künstlicher Intelligenz!")
-    
-    col1, col2, col3 = st.columns([1,2,1])
+    st.markdown("""
+<h1 style='font-size: 40px; text-align: center;'>
+Willkommen zur interaktiven Lernumgebung<br>
+zu künstlicher Intelligenz!
+</h1>
+""", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1,4,1])
     with col2:
         st.image("quiz/images/start.png", use_container_width=True)
         
-    
+    st.markdown("""---""")
 
     st.write("""
 Diese App hilft dir dabei, **Künstliche Intelligenz (KI)** besser zu verstehen.
